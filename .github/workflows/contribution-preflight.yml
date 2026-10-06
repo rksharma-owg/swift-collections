@@ -15,7 +15,6 @@ jobs:
       enable_android_sdk_build: true
       enable_android_sdk_checks: true
       enable_freebsd_checks: true
-    steps: []
   containers-tests:
     name: Containers Test
     uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
@@ -25,7 +24,6 @@ jobs:
       enable_linux_checks: true
       enable_windows_checks: false
       swift_flags: --traits UnstableContainersPreview
-    steps: []
   hashed-containers-tests:
     name: Hashed Containers Test
     uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
@@ -35,7 +33,6 @@ jobs:
       enable_linux_checks: true
       enable_windows_checks: false
       swift_flags: --traits UnstableHashedContainers
-    steps: []
   all-traits-tests:
     name: All Unstable Package Traits Test
     uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
@@ -45,7 +42,6 @@ jobs:
       enable_linux_checks: true
       enable_windows_checks: false
       swift_flags: --traits UnstableHashedContainers,UnstableContainersPreview,UnstableSortedCollections
-    steps: []
   embedded-swift:
     name: Build with Embedded Swift
     uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
@@ -56,7 +52,6 @@ jobs:
       enable_wasm_sdk_build: false
       enable_embedded_wasm_sdk_build: true
       swift_flags: --target Collections
-    steps: []
   soundness:
     name: Soundness
     uses: rksharma-owg/swift-collections/.github/workflows/fork-soundness.yml@main
@@ -68,7 +63,6 @@ jobs:
       format_check_enabled: false
       api_breakage_check_enabled: false
       api_breakage_check_baseline: ${{ inputs.base_sha }}
-    steps: []
   cmake-build:
     name: CMake Build
     runs-on: ubuntu-latest
