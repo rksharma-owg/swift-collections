@@ -1,0 +1,41 @@
+name: Contribution trait validation
+permissions:
+  contents: read
+jobs:
+  hashed-containers-tests:
+    name: Hashed Containers Test
+    uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
+    with:
+      linux_swift_versions: '["6.2", "nightly-main"]'
+      enable_macos_checks: false
+      enable_linux_checks: true
+      enable_windows_checks: false
+      swift_flags: --traits UnstableHashedContainers
+  all-traits-tests:
+    name: All Unstable Package Traits Test
+    uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
+    with:
+      linux_swift_versions: '["6.2", "6.3", "nightly-6.4.x", "nightly-main"]'
+      enable_macos_checks: false
+      enable_linux_checks: true
+      enable_windows_checks: false
+      swift_flags: --traits UnstableHashedContainers,UnstableContainersPreview,UnstableSortedCollections
+  embedded-swift:
+    name: Build with Embedded Swift
+    uses: rksharma-owg/swift-collections/.github/workflows/fork-package.yml@main
+    with:
+      enable_linux_checks: false
+      enable_macos_checks: false
+      enable_windows_checks: false
+      enable_wasm_sdk_build: false
+      enable_embedded_wasm_sdk_build: true
+      swift_flags: --target Collections
+'on':
+  workflow_dispatch:
+    inputs:
+      patch_sha:
+        type: string
+        required: true
+      base_sha:
+        type: string
+        required: true
